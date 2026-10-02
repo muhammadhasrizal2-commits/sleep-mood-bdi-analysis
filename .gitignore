@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.venv/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+
+# Project data
+# Keep raw/processed folders but ignore generated files unless you want to track them.
+# Uncomment if you want to version specific generated artifacts:
+# data/processed/*.csv
