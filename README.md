@@ -15,10 +15,10 @@ You should expect to present, at minimum:
 • Descriptive statistics and initial findings 
 
 ## Section Allocations:
-Ciara: research question + dataset
-Joyce: ethical considerations
-Saif: data-cleaning + preprocessing
-Emily: descriptive statistics + inital findings
+- Ciara: research question + dataset
+- Joyce: ethical considerations
+- Saif: data-cleaning + preprocessing
+- Emily: descriptive statistics + inital findings
 
 ## Project goals
 - Load raw CSV data from `data/raw/`
