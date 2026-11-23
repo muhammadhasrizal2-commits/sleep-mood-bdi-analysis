@@ -2,7 +2,7 @@
 
 **Research question:** what factors can predict whether or not adolescents cross the clinical threshold for depression according to the BDI-II?
 
-**Chosen model:** logistic regression. **Target length:** about 8 minutes (8 slides, about 1 minute each), leaving room under the 10-minute limit.
+**Chosen model:** logistic regression. **Target length:** about 9 minutes (8 slides; Saif's two at about 1:30 each, the rest about 1 minute), leaving room under the 10-minute limit.
 
 Each script is about 100–120 words, roughly 50–60 seconds spoken. Figures are in this folder.
 
@@ -11,8 +11,8 @@ Each script is about 100–120 words, roughly 50–60 seconds spoken. Figures ar
 | 1 | Dataset and research question | Ciara | `slide1_class_balance.png` | 1:00 |
 | 2 | Chosen models | Joyce | `slide2_models_f1.png` | 1:00 |
 | 3 | Modelling approach | Joyce | `slide3_workflow.png` | 1:00 |
-| 4 | Predictions | Saif | `slide4_confusion_matrix.png` | 1:00 |
-| 5 | Why the model flags so few | Saif | `slide5_predicted_probabilities.png` | 1:00 |
+| 4 | Predictions | Saif | `slide4_confusion_matrix.png` | 1:30 |
+| 5 | Why the model flags so few | Saif | `slide5_predicted_probabilities.png` | 1:30 |
 | 6 | Evaluation | Emily | `slide6_evaluation_metrics.png` | 1:00 |
 | 7 | Interpretation: which factors matter | Emily | `slide7_coefficients.png` | 1:00 |
 | 8 | Limits and conclusion | Ciara | `slide8_cases_caught.png` | 1:00 |
@@ -62,7 +62,7 @@ Each script is about 100–120 words, roughly 50–60 seconds spoken. Figures ar
 - Missed 123
 
 **Script**
-> Once the model is trained, we give it the 962 adolescents it has never seen. For each one it produces a probability of being above the threshold, and anyone at 0.5 or above is labelled depressed. The model flagged 45 adolescents. 23 of those really were above the threshold, and 22 were false alarms. But 146 adolescents were actually above the threshold, so the model missed 123 of them. It correctly left 794 unflagged. So the model is cautious: when it flags someone it is right about half the time, but it flags very few.
+> Joyce showed how we built and chose our model. Now I'll show what it actually does with new data. We gave the trained logistic regression the 962 adolescents in our test set, people it had never seen. For each one, it produces a probability of being above the depression threshold, and anyone at 0.5 or above is labelled depressed. This grid, a confusion matrix, compares those labels with what really happened: each row is the truth, each column is the model's call. Top left, 794 adolescents correctly left unflagged. Bottom right, 23 correctly flagged. The other two boxes are the mistakes. Top right, 22 false alarms: adolescents flagged who were not above the threshold. Bottom left is the box that matters most: 123 adolescents who were above the threshold, and the model missed them. In a real setting, a false alarm costs a follow-up conversation, but a missed case is a young person who doesn't get support. So the model is cautious: when it flags someone it is right about half the time, but out of 146 real cases it found only 23.
 
 ## Slide 5. Why the model flags so few (Saif)
 
@@ -72,7 +72,7 @@ Each script is about 100–120 words, roughly 50–60 seconds spoken. Figures ar
 - The threshold is a choice: at 0.4, 68 flagged and 32 real cases caught
 
 **Script**
-> Why so few? This chart shows the predicted probabilities. Grey is adolescents who are not depressed, blue is those who are. Both groups sit mostly on the left: the typical probability for a depressed adolescent is about 0.23, well under the 0.5 line. The two groups overlap, because their sleep and screen profiles are similar, so the model is rarely confident. The threshold is also a choice. If we lowered it to 0.4, the model would flag 68 adolescents and catch 32 real cases instead of 23, at the cost of more false alarms. Emily will now show how we measure that trade-off.
+> So why does it flag so few? This chart shows the probability the model gave every adolescent in the test set. Grey is those who were not depressed, blue is those who were, and the red line is the 0.5 threshold. Anyone to the right of that line gets flagged. Notice that almost everything sits on the left, including most of the blue. The typical probability for a depressed adolescent is only about 0.23. The model isn't confident about anyone, because the two groups overlap: on sleep, screen time and sex, many depressed and non-depressed adolescents look very similar, so there is no clean line to draw between them. The second point is that 0.5 is a convention, not a rule. If we lowered the threshold to 0.4, the model would flag 68 adolescents and catch 32 real cases instead of 23, but false alarms would rise from 22 to 36. Where to set it depends on which mistake is worse, and that choice should be made on validation data, not on the test set. Emily will now show how we measure that trade-off.
 
 ## Slide 6. Evaluation (Emily)
 
